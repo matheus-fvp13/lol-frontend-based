@@ -27,17 +27,52 @@ const apiService = {
   }
 };
 
+const state = {
+  values: {
+    champions: [],
+  },
+  views: {
+    avatar: document.getElementById("avatar"),
+    response: document.querySelector(".text-reponse"),
+    question: document.getElementById("text-request"),
+    carousel: document.getElementById("carousel-cards-content")
+  }
+}
+
 async function main() {
 
-  // chamada para a api do lol
-  //const data = await apiService.postAskChampion(1, "Me diga como pedir minha namorada em casamento?");
-  //console.log(data);
-  //guardar os dados dos personagens
+  await loadChampions();
+  await renderChampions();
 
-  //renderizar os personagens na tela
   //resetar a tela
 
+  
   await loadCarrousel();
+}
+
+async function loadChampions() {
+  const data = await apiService.getChampions();
+  state.values.champions = data;
+}
+
+async function renderChampions() {
+  const championsData = state.values.champions;
+  const elements = championsData.map(
+    (champion) => 
+        `<div class="timeline-carousel__item">
+        <div class="timeline-carousel__image">
+          <div class="media-wrapper media-wrapper--overlay"
+            style="background: url('${champion.imageUrl}') center center; background-size:cover;">
+          </div>
+        </div>
+        <div class="timeline-carousel__item-inner">
+          <span class="name">${champion.name}/span>
+          <span class="role">${champion.role}</span>
+          <p>${champion.lore}</p>
+        </div>
+      </div>`
+  );
+  state.views.carousel.innerHTML = elements.join(" ");
 }
 
 async function loadCarrousel() {
