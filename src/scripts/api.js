@@ -46,7 +46,6 @@ async function main() {
 
   //resetar a tela
 
-  
   await loadCarrousel();
 }
 
@@ -59,7 +58,8 @@ async function renderChampions() {
   const championsData = state.values.champions;
   const elements = championsData.map(
     (champion) => 
-        `<div class="timeline-carousel__item">
+        `<div class="timeline-carousel__item" 
+        onclick="onChangeChampionSelected(${champion.id}, '${champion.imageUrl}')">
         <div class="timeline-carousel__image">
           <div class="media-wrapper media-wrapper--overlay"
             style="background: url('${champion.imageUrl}') center center; background-size:cover;">
@@ -73,6 +73,17 @@ async function renderChampions() {
       </div>`
   );
   state.views.carousel.innerHTML = elements.join(" ");
+}
+
+async function onChangeChampionSelected(id, imageUrl) {
+  state.views.avatar.style.backgroundImage = `url(${imageUrl})`;
+  state.views.avatar.dataset.id = id;
+  await resetForm();
+}
+
+async function resetForm() {
+  state.views.question.value = "";
+  state.views.response.textContent = "Pode vir!";
 }
 
 async function loadCarrousel() {
