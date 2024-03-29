@@ -1,3 +1,45 @@
+const routes = {
+  champions: "http://sdw24.sa-east-1.elasticbeanstalk.com/champions",
+  ask: "http://sdw24.sa-east-1.elasticbeanstalk.com/champions/{id}/ask"
+};
+
+const apiService = {
+  async getChampions () {
+    const route = routes.champions  ;
+    const respose = await fetch(route);
+    return await respose.json();
+  },
+  async postAskChampion(id, message) {
+    const route = routes.ask.replace("{id}", id);
+
+    const options = {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        question: message
+      })
+    };
+
+    const response = await fetch(route, options);
+    return await response.json();
+  }
+};
+
+async function main() {
+
+  // chamada para a api do lol
+  //const data = await apiService.postAskChampion(1, "Me diga como pedir minha namorada em casamento?");
+  //console.log(data);
+  //guardar os dados dos personagens
+
+  //renderizar os personagens na tela
+  //resetar a tela
+
+  await loadCarrousel();
+}
+
 async function loadCarrousel() {
   const caroujs = (el) => {
     return $("[data-js=" + el + "]");
@@ -28,4 +70,4 @@ async function loadCarrousel() {
   });
 }
 
-loadCarrousel();
+main()
