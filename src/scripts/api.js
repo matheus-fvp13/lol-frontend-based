@@ -14,7 +14,7 @@ const apiService = {
 
     const options = {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
@@ -44,8 +44,6 @@ async function main() {
   await loadChampions();
   await renderChampions();
 
-  //resetar a tela
-
   await loadCarrousel();
 }
 
@@ -66,7 +64,7 @@ async function renderChampions() {
           </div>
         </div>
         <div class="timeline-carousel__item-inner">
-          <span class="name">${champion.name}/span>
+          <span class="name">${champion.name}</span>
           <span class="role">${champion.role}</span>
           <p>${champion.lore}</p>
         </div>
@@ -101,6 +99,15 @@ async function getRandomQuote() {
   ]
   const randomIndex = Math.floor(Math.random() * quotes.length);
   return quotes[randomIndex];
+}
+
+async function fetchAskChampion() {
+  document.body.style.cursor = "wait";
+  const id = state.views.avatar.dataset.id;
+  const message = state.views.question.value;
+  const response = await apiService.postAskChampion(id, message);
+  state.views.response.textContent = response.answer;
+  document.body.style.cursor = "default";
 }
 
 async function loadCarrousel() {
