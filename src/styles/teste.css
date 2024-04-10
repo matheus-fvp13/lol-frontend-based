@@ -1,0 +1,156 @@
+header {
+    padding: 10px;
+}
+
+main {
+    margin-top: 15px;
+}
+
+.bg-video {
+    position: fixed;
+    z-index:  -2;
+    width:    100%;
+    height:   100%;
+    overflow: hidden;
+    display:  flex;
+    justify-content: center;
+}
+
+.bg-video::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 50%,
+        rgba(0, 0, 0, 1) 100%
+    );
+}
+
+.header_title {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.champions__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.champion {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 400px;
+    border: 1.5px solid gray;
+    border-radius: 10px;
+    background-color: #0bc6e344;
+}
+
+.champion_asset {
+    width: 100%;
+}
+
+.champion_name_role {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.champion_name, .champion_role {
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.champion_lore {
+    color: rgb(153, 152, 152);
+    font-size: 0.85rem;
+    text-align: justify;
+    padding: 9 5px;
+}
+
+/*.modal {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+
+.modal__content {
+    background-color: #030608;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 500px;
+    height: 550px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.modal__content__avatar {
+    height: 10rem;
+    width: 10rem;
+    margin-top: 10px;
+    border: 6px solid white;
+    border-radius: 50%;
+    background-image: url("https://via.placeholder.com/550x320/171717/cccccc?text=550x320");
+    background-size: cover;
+    background-position: top;
+}
+
+.modal_content__question {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.question {
+    width: 100%;
+    height: 1.5rem;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    text-align: center;
+}
+
+.question:focus {
+    outline: none;
+}
+
+.modal_content__question__button {
+    background-color: #0BC4E2;
+    width: 40%;
+    height: 35px;
+    border-radius: 10px;
+    border-style: none;
+    text-transform: uppercase;
+    font-weight: 600;
+} 
+
+.modal_content__answer {
+    display: none;
+    color: rgba(255, 217, 0, 0.521);
+    text-align: center;
+}*/
+
